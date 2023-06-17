@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import product from "./product";
+import Name from "./Name";
+import Price from "./Price";
+import Description from "./Description";
+import Image from "./Image";
+import { Card, Container } from "react-bootstrap";
 
-function App() {
+const firstName = prompt("What is your first name?");
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Card className="my-card">
+        <Card.Body>
+          <Card.Title className="my-card-title">
+            <Name name={product.name} />
+          </Card.Title>
+          <Card.Text>
+            <Price price={product.price} />
+            <Description description={product.description} />
+            <Image image={product.image} />
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <p className="greeting">
+        Hello, {firstName !== "YourFirstName" ? firstName : "there"}!
+        {firstName && <Image image={product.image} />}
+      </p>
+    </Container>
   );
-}
+};
 
 export default App;
